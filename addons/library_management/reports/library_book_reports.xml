@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="action_report_library_book" model="ir.actions.report">
+    <field name="name">Fiche livre</field>
+    <field name="model">library.book</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">library_management.report_library_book</field>
+    <field name="report_file">library_management.report_library_book</field>
+    <field name="print_report_name">'Fiche - %s' % (object.name)</field>
+    <field name="binding_model_id" ref="model_library_book"/>
+    <field name="binding_type">report</field>
+  </record>
+
+  <template id="report_library_book">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="o">
+        <t t-call="web.external_layout">
+          <div class="page">
+            <h2 t-field="o.name"/>
+            <p>État : <span t-field="o.state"/></p>
+            <p t-if="o.borrower_id">Emprunté par : <span t-field="o.borrower_id.name"/></p>
+            <p t-if="o.due_date">Date de retour prévue : <span t-field="o.due_date"/></p>
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+</odoo>
