@@ -5,6 +5,7 @@ class LibraryBook(models.Model):
     _description = 'Livre'
 
     name = fields.Char(required=True)
+    borrower_id = fields.Many2one('res.partner', string='Emprunteur')
     state = fields.Selection([
         ('draft', 'Brouillon'),
         ('available', 'Disponible'),

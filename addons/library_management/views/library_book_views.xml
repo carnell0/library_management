@@ -11,6 +11,7 @@
             <group>
                 <field name="name"/>
                 <field name="due_date"/>
+                <field name="borrower_id"/>
             </group>
         </sheet>
       </form>
